@@ -1,40 +1,40 @@
 import React, { useState, useEffect, useContext }  from 'react';
 import axios from 'axios';
 import { SessionContext } from "../App";
+import Movie from './Movie.js'
 
-function Library() {
+const Library = (props) => {
 
-  const [library, setLibrary] = useState([]);
+  // const [library, setLibrary] = useState([]);
   const sessionContext = useContext(SessionContext);
 
-  useEffect(() => {
-    axios.get('http://localhost:4000/movies')
-      .then((response) => {
-        setLibrary(response.data);
-      })
-      .catch(()=> {
-        alert("Failed to fetch movies")
-      })
-  },[])
+  // useEffect(() => {
+  //   axios.get('http://localhost:4000/movies')
+  //     .then((response) => {
+  //       setLibrary(response.data);
+  //     })
+  //     .catch(()=> {
+  //       alert("Failed to fetch movies")
+  //     })
+  // },[])
+
+  const libraryList = sessionContext.library.map((movie) => {
+    return (
+      <Movie
+        title={movie.title} 
+        overview={movie.overview}
+        release_date={movie.release_date}
+        external_id={movie.external_id}
+        onMovieCallback={props.onAddMovie}
+      />
+    )
+  })  
 
   return (
-    <div className="App">
-      <p>Here is the library!</p>
-      <ul>
-        {library.map((movie) => {
-          return (
-            <li>
-              <span>
-               {movie.title}
-            </span>
-            <button onClick={()=> sessionContext.setSelectedMovie(movie)}>Select</button>
-            </li>
-          )
-        }
-        )}
-      </ul>
+    <div>
+      {libraryList}
     </div>
-  );
+  )
 }
 
 export default Library;

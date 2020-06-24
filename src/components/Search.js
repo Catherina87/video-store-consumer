@@ -4,8 +4,8 @@ import axios from 'axios';
 const Search = () => {
 
   const [searchFieldQuery, setSearchFieldQuery] = useState("");
-
   const [result, setResult] = useState([]);
+
 
   const handleSearch = async (e) => {
     e.preventDefault();
@@ -24,17 +24,24 @@ const Search = () => {
   return (
     <div>
       <input
+        className="search-input"
         name="search"
         onChange={(e) => setSearchFieldQuery(e.target.value)}
         value={searchFieldQuery}
       />
 
-      <button onClick={handleSearch}>
+      <button
+        className="search-button"
+        onClick={handleSearch}
+      >
         Search
       </button>
 
       <div>
-        {result.map(d => <p>{d.title}</p>)}
+        {result.map(d =>
+          <p>{d.title}</p>
+          // <button>Add to Library</button>
+        )}
       </div>
     </div>
   );
