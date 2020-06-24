@@ -18,3 +18,34 @@ nav {
   list-style: none;
   color: white;
 }
+
+.search-input {
+  margin: 50px auto;
+  display: block;
+  width: 250px;
+}
+
+.search-button {
+  /* TODO: Fix styles */
+  height: 46px;
+  padding: 10px 26px;
+  border: none;
+  border-radius: 30px;
+  color: black;
+  background-color: grey;
+
+  font-size: 20px;
+  padding: 15px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  color: #FFF;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  width: 150px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  cursor: pointer;
+  display: inline-block;
+  /* border-radius: 25px; */
+}
